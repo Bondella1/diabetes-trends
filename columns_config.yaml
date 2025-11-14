@@ -1,0 +1,15 @@
+standard_keys:
+  year: [year]
+  state: [state]
+  state_fips: [state_fips, fips]
+
+targets:
+  diabetes_prevalence: [diabetes_prevalence, percentage]
+
+features:
+  obesity_prevalence: [obesity_prevalence]
+  inactivity_prevalence: [inactivity_prevalence]
+  smoking_prevalence: [smoking_prevalence]
+
+store_as_percent: true      # keep all rates as 0–100
+min_required: [year, state_or_fips]  # must have a year and either state or fips

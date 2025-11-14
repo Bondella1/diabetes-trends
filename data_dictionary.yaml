@@ -1,0 +1,14 @@
+version: 0.1
+granularity: state-year
+time_window: 2014-2023
+columns:
+  state_fips: {type: int, description: "FIPS code for US state"}
+  state: {type: str, description: "USPS 2-letter state code"}
+  year: {type: int, description: "Calendar year"}
+  diabetes_prevalence: {type: float, unit: percent, range: [0, 100], description: "Age-adjusted diabetes prevalence (%)"}
+  obesity_prevalence: {type: float, unit: percent, range: [0, 100], description: "Adult obesity (%)"}
+  inactivity_prevalence: {type: float, unit: percent, range: [0, 100], description: "Physical inactivity (%)"}
+  smoking_prevalence: {type: float, unit: percent, range: [0, 100], description: "Current smoking (%)"}
+notes:
+  - "All rate variables stored as percent (0–100)."
+  - "Data sourced from CDC US Diabetes Surveillance System."
