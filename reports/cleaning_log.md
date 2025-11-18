@@ -19,3 +19,7 @@ A suitable version of pyarrow or fastparquet is required for parquet support.
 Trying to import the above resulted in these errors:
  - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
  - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet. | wrote DiabetesAtlas_AllStatesLineChartData_clean.csv
+- 2025-11-18T13:24:43.734113 | DiabetesAtlas_AllStatesLineChartData.csv → DiabetesAtlas_AllStatesLineChartData.parquet | rows=540
+- 2025-11-18T13:24:43.824252 | cdc_inactivity_2014_2023.csv → cdc_inactivity_2014_2023.parquet | rows=540
+- 2025-11-18T13:24:43.835162 | cdc_obesity_2014_2023.csv → cdc_obesity_2014_2023.parquet | rows=540
+- 2025-11-18T13:24:43.846580 | cdc_smoking_2014_2023.csv → cdc_smoking_2014_2023.parquet | rows=540

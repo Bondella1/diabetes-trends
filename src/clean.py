@@ -113,6 +113,25 @@ def clean_one_file(path: Path, cfg):
         df = pd.read_csv(path)
 
     df = standardize_colnames(df)
+    
+    blob = (path.name + " " + path.read_text(encoding="utf-8", errors="ignore").splitlines()[0]).lower()
+
+    if ("obesity" in blob) or ("bmi" in blob):
+        indicator = "obesity"
+    elif ("inactivity" in blob) or ("physical inactivity" in blob):
+        indicator = "inactivity"
+    elif "smoking" in blob:
+        indicator = "smoking"
+    else:
+        indicator = "diabetes"   # default
+
+    rename_map = {
+    "percentage": "diabetes_prevalence" if indicator == "diabetes" else f"{indicator}_prevalence",
+    "lower_limit": "ci_low",
+    "upper_limit": "ci_high",
+    "_upper_limit": "ci_high",  # handles a leading space that becomes "_upper_limit"
+    }
+    df = df.rename(columns=rename_map)
 
     # Normalize known CDC column names
     df = df.rename(columns={"percentage":"diabetes_prevalence",
