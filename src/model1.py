@@ -31,8 +31,8 @@ def main():
     X_train = pd.read_csv("data/processed/X_train.csv")
     y_train = pd.read_csv("data/processed/y_train.csv")
 
-    X_train = X_train[['inactivity_prevalence','obesity_prevalence',"smoking_prevalence"]]
-    X_test = X_test[['inactivity_prevalence','obesity_prevalence',"smoking_prevalence"]]
+    X_train = X_train[['inactivity_prevalence',"obesity_prevalence","smoking_prevalence"]]
+    X_test = X_test[['inactivity_prevalence',"obesity_prevalence","smoking_prevalence"]]
 
 
     model1 = LinearRegression()
@@ -41,7 +41,7 @@ def main():
     y_pred = model1.predict(X_test)
 
 
-    print(f'\nCoefficients:\n\tInactivity: {model1.coef_[0][0]}\n\tObesity: {model1.coef_[0][1]}\n\tSmoking: {model1.coef_[0][2]}\n'
+    print(f'\nCoefficients:\n\tInactivity: {model1.coef_[0][0]}\n\tObesity: {model1.coef_[0][1]}\n\tSmoking: {model1.coef_[0][2]}'
           f'Intercept: {model1.intercept_[0]}\n'
           f'R-Squared: {r2_score(y_test,y_pred)}\n'
           f'Mean Squared Error: {mean_squared_error(y_test,y_pred)}\n'
