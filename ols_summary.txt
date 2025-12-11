@@ -1,0 +1,31 @@
+                             OLS Regression Results                            
+===============================================================================
+Dep. Variable:     diabetes_prevalence   R-squared:                       0.524
+Model:                             OLS   Adj. R-squared:                  0.518
+Method:                  Least Squares   F-statistic:                     70.14
+Date:                 Thu, 11 Dec 2025   Prob (F-statistic):           3.39e-70
+Time:                         16:58:26   Log-Likelihood:                -798.83
+No. Observations:                  506   AIC:                             1614.
+Df Residuals:                      498   BIC:                             1647.
+Df Model:                            7                                         
+Covariance Type:                   HC3                                         
+=================================================================================================
+                                    coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------
+Intercept                         9.2542      0.096     96.825      0.000       9.067       9.441
+C(region)[T.Northeast]           -0.7413      0.133     -5.571      0.000      -1.002      -0.480
+C(region)[T.South]                2.0387      0.144     14.163      0.000       1.757       2.321
+C(region)[T.West]                -0.5819      0.144     -4.045      0.000      -0.864      -0.300
+year_c                            0.1388      0.031      4.420      0.000       0.077       0.200
+year_c:C(region)[T.Northeast]    -0.0716      0.044     -1.614      0.106      -0.158       0.015
+year_c:C(region)[T.South]         0.0042      0.050      0.084      0.933      -0.095       0.103
+year_c:C(region)[T.West]         -0.0456      0.047     -0.964      0.335      -0.138       0.047
+==============================================================================
+Omnibus:                        4.088   Durbin-Watson:                   1.884
+Prob(Omnibus):                  0.129   Jarque-Bera (JB):                3.432
+Skew:                          -0.109   Prob(JB):                        0.180
+Kurtosis:                       2.660   Cond. No.                         14.3
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)
