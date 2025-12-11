@@ -13,7 +13,7 @@ if not os.path.exists(CSV_PATH):
 
 df = pd.read_csv(CSV_PATH)
 
-# Basic sanity checks - change column names below if your file uses different names
+# Basic sanity checks - change column names below if file uses different names
 expected_cols = {'state', 'year', 'diabetes_prevalence'}
 if not expected_cols.issubset(df.columns):
     raise ValueError(f"CSV must contain columns: {expected_cols}. Found: {df.columns.tolist()}")
@@ -81,7 +81,7 @@ print("Saved plot to region_diabetes_trends.png")
 # Center year to improve interpretability
 df['year_c'] = df['year'] - df['year'].mean()
 
-# Make region categorical and set reference (you can change reference to 'South' if desired)
+# Make region categorical and set reference
 df['region'] = pd.Categorical(df['region'])
 
 
