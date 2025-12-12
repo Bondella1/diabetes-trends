@@ -41,11 +41,20 @@ def main():
     y_pred = model1.predict(X_test)
 
 
-    print(f'\nCoefficients:\n\tInactivity: {model1.coef_[0][0]}\n\tObesity: {model1.coef_[0][1]}\n\tSmoking: {model1.coef_[0][2]}'
+    print(f'\nCoefficients:\n\tInactivity: {model1.coef_[0][0]}\n\tObesity: {model1.coef_[0][1]}\n\tSmoking: {model1.coef_[0][2]}\n'
           f'Intercept: {model1.intercept_[0]}\n'
           f'R-Squared: {r2_score(y_test,y_pred)}\n'
           f'Mean Squared Error: {mean_squared_error(y_test,y_pred)}\n'
           f'Mean Absolute Error: {mean_absolute_error(y_test, y_pred)}\n')
+    
+    feature_names = ['inactivity_prevalence', 'Obesity_prevalence', 'smoking_prevalence'] 
+    coefficients = [model1.coef_[0][0],model1.coef_[0][1], model1.coef_[0][2]]
+    equation = f"y = {model1.intercept_[0]}"
+    for name, coef in zip(feature_names, coefficients):
+        equation += f" + {coef:.2f}*{name}"
+
+    print(f"Regression Equation: {equation}")
+
     
     print('\n-----------------------------------------------------------------------------')
     num_folds = 5
