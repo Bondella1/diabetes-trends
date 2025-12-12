@@ -1,30 +1,22 @@
-import matplotlib.pyplot as plt
-import numpy as np 
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
-from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
 #For K-fold
 from sklearn.model_selection import cross_val_score,KFold
-from sklearn.svm import SVC 
-
-#Check for co-linearity
 
 def main():
-    #X_train.csv`/`y_train.csv
 
     df = pd.read_csv("data/processed/X_train.csv")
     df = df[["inactivity_prevalence","obesity_prevalence","smoking_prevalence"]]
 
     df.head()
-
+    #correlation matrix
     corrmatrix = df.corr(method= 'pearson')
     print(corrmatrix)
     print('\n-----------------------------------------------------------------------------')
     
-        
+    #Formatting the split and processed data
     X_test = pd.read_csv("data/processed/X_test.csv")
     y_test = pd.read_csv("data/processed/y_test.csv")
 
@@ -40,14 +32,15 @@ def main():
 
     y_pred = model1.predict(X_test)
 
-
+    #Model Information
     print(f'\nCoefficients:\n\tInactivity: {model1.coef_[0][0]}\n\tObesity: {model1.coef_[0][1]}\n\tSmoking: {model1.coef_[0][2]}\n'
           f'Intercept: {model1.intercept_[0]}\n'
           f'R-Squared: {r2_score(y_test,y_pred)}\n'
           f'Mean Squared Error: {mean_squared_error(y_test,y_pred)}\n'
           f'Mean Absolute Error: {mean_absolute_error(y_test, y_pred)}\n')
     
-    feature_names = ['inactivity_prevalence', 'Obesity_prevalence', 'smoking_prevalence'] 
+    #Linear Regression Equation
+    feature_names = ['inactivity', 'Obesity', 'smoking'] 
     coefficients = [model1.coef_[0][0],model1.coef_[0][1], model1.coef_[0][2]]
     equation = f"y = {model1.intercept_[0]}"
     for name, coef in zip(feature_names, coefficients):
@@ -67,4 +60,3 @@ def main():
     print(f'Mean Accuracy: {cross_val_results.mean()*100:.2f}%')
 
 main()
-#colinearity seems fine, model *may* be done? But check more on conflating the two inact and obes, also understand how the 3d reg plane works. 
